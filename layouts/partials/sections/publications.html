@@ -1,0 +1,26 @@
+{{ if .Site.Params.publications.enable | default false }}
+<section id="publications" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.publications.title | default "Publications" }}</h3>
+        <div class="publications-wrapper">
+            <div class="publications-container">
+                {{ range .Site.Params.publications.items }}
+                <div class="publication-card">
+                    <a href="{{ .url }}" title="{{ .title }}" target="_blank" class="publication-link">
+                        {{ if .image }}
+                        <div class="publication-image">
+                            <img src="{{ .image }}" alt="{{ .title }}">
+                        </div>
+                        {{ end }}
+                        <div class="publication-content">
+                            <h5 class="publication-title">{{ .title }}</h5>
+                            <p class="publication-text">{{ .content }}</p>
+                        </div>
+                    </a>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
